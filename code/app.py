@@ -1,3 +1,4 @@
+from db import db
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -28,7 +29,7 @@ api.add_resource(Item, "/item/<string:name>")
 api.add_resource(ItemList, "/items")
 api.add_resource(UserRegister, "/register")
 
+db.init_app(app)
+
 if __name__ == '__main__':
-    from db import db
-    db.init_app(app)
     app.run(port=5000, debug=True)
